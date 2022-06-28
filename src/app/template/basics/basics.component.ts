@@ -15,7 +15,7 @@ export class BasicsComponent implements OnInit {
   }
 
   save( form:NgForm ) {
-    console.log( form.value ); 
+    console.log( form );
   }
 
 }

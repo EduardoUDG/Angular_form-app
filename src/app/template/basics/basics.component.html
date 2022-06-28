@@ -17,8 +17,11 @@
                  required
                  name="product"
                  class="form-control"
-                 placeholder="Product name">
-          <span class="form-text text-danger">Should be 3 letters</span>
+                 placeholder="Product name"
+                 minlength="3">
+          <span *ngIf="miFormulario.controls['product']?.invalid &&
+                       miFormulario?.touched"
+                class="form-text text-danger">Should be 3 letters</span>
         </div>
       </div>
 
@@ -41,7 +44,6 @@
         <div class="col-sm-9">
           <input type="number"
                  ngModel
-                 required
                  name="stock"
                  class="form-control"
                  placeholder="Product stock">
@@ -70,6 +72,16 @@
     <span>valid</span>
     <code>
       <pre>{{ miFormulario.valid }}</pre>
+    </code>
+
+    <span>Pristine</span>
+    <code>
+      <pre>{{ miFormulario.pristine }}</pre>
+    </code>
+
+    <span>Touched</span>
+    <code>
+      <pre>{{ miFormulario.touched }}</pre>
     </code>
 
     <span>Value</span>
