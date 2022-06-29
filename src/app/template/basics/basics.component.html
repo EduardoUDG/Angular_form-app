@@ -20,7 +20,9 @@
                  placeholder="Product name"
                  minlength="3">
           <span *ngIf="productNameValid()"
-                class="form-text text-danger">Should be 3 letters</span>
+                class="form-text text-danger">
+                Should be 3 letters
+          </span>
         </div>
       </div>
 
@@ -32,8 +34,13 @@
                  ngModel
                  required
                  name="price"
+                 min="0"
                  class="form-control"
                  placeholder="Product price">
+          <span *ngIf="productPriceValid()"
+            class="form-text text-danger">
+            Price must be greater than 0
+          </span>
         </div>
       </div>
 
@@ -51,7 +58,9 @@
 
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button type="submit"
+                  [disabled]="miFormulario.invalid"
+                  class="btn btn-primary float-end">
             <i class="bi bi-check-lg"></i>
             Save
           </button>
