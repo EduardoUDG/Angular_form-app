@@ -1,1 +1,77 @@
-<p>dinamics works!</p>
+<h2>Template: <small>dinamics</small></h2>
+<hr>
+
+<form (ngSubmit)="save()"
+      #myForm="ngForm"
+      autocomplete="off">
+
+  <!-- Name -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Name</label>
+    <div class="col-sm-9">
+      <input type="text"
+             ngModel
+             name="name"
+             class="form-control"
+             placeholder="Person name"
+             required
+             minlength="3">
+      <span
+        *ngIf="valdiateName()"
+        class="form-text text-danger">
+        Should be 3 letters
+      </span>
+    </div>
+  </div>
+
+  <!-- Add -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorite</label>
+    <div class="col-sm-9">
+
+      <div class="input-group">
+        <input class="form-control"
+                type="text"
+                ngModel
+                name="favorite"
+                placeholder="Add favorite"
+                required
+                minlength="3">
+        <button class="btn btn-outline-primary"
+                type="button">
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Favorite list  -->
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Favorites</label>
+    <div class="col-sm-9">
+
+      <input class="form-control mb-1" type="text">
+      <input class="form-control mb-1" type="text">
+      <input class="form-control mb-1" type="text">
+      <input class="form-control mb-1" type="text">
+      <input class="form-control mb-1" type="text">
+
+    </div>
+  </div>
+
+
+
+  <!-- Button -->
+  <div class="row">
+    <div class="col">
+      <button
+        [disabled]="myForm.invalid"
+        class="btn btn-primary float-end"
+        (click)="save()">
+        <i class="bi bi-check-lg"></i>
+        save
+      </button>
+    </div>
+  </div>
+
+</form>
