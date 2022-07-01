@@ -22,8 +22,8 @@ export class BasicsComponent implements OnInit {
   }
 
   productPriceValid(): boolean {
-    return this.miFormulario?.controls['price']?.touched &&
-           this.miFormulario?.controls['price']?.value < 0;
+    return this.miFormulario?.controls['price']?.value < 0 &&
+           this.miFormulario?.controls['price']?.touched;
   }
 
   // save( form:NgForm ) {

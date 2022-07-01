@@ -34,8 +34,8 @@
                  ngModel
                  required
                  name="price"
-                 min="0"
                  class="form-control"
+                 min="0"
                  placeholder="Product price">
           <span *ngIf="productPriceValid()"
             class="form-text text-danger">
@@ -51,8 +51,11 @@
           <input type="number"
                  ngModel
                  name="stock"
+                 customMin
+                 [minimo]="0"
                  class="form-control"
-                 placeholder="Product stock">
+                 placeholder="Product stock"
+                 required>
         </div>
       </div>
 
