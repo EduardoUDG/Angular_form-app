@@ -10,7 +10,7 @@
     <label class="col-sm-3 col-form-label">Name</label>
     <div class="col-sm-9">
       <input type="text"
-             ngModel
+             [ngModel]="person.name"
              name="name"
              class="form-control"
              placeholder="Person name"
@@ -50,11 +50,12 @@
     <label class="col-sm-3 col-form-label">Favorites</label>
     <div class="col-sm-9">
 
-      <input class="form-control mb-1" type="text">
-      <input class="form-control mb-1" type="text">
-      <input class="form-control mb-1" type="text">
-      <input class="form-control mb-1" type="text">
-      <input class="form-control mb-1" type="text">
+      <input class="form-control mb-1"
+             *ngFor="let favorite of person.favorites; let i = index"
+             [(ngModel)]="favorite.name"
+             name="favorite_{{ i }}"
+             type="text"
+             required>
 
     </div>
   </div>
@@ -75,3 +76,8 @@
   </div>
 
 </form>
+
+
+
+<span>Form Data</span>
+<code><pre>{{ person | json }}</pre></code>
