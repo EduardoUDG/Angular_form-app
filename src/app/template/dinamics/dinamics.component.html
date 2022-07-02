@@ -46,17 +46,24 @@
   </div>
 
   <!-- Favorite list  -->
-  <div class="mb-3 row">
+  <div class="mb-3 row" *ngIf="person.favorites.length > 0">
     <label class="col-sm-3 col-form-label">Favorites</label>
     <div class="col-sm-9">
 
-      <input class="form-control mb-1"
-             *ngFor="let favorite of person.favorites; let i = index"
-             [(ngModel)]="favorite.name"
-             name="favorite_{{ i }}"
-             type="text"
-             required>
+      <div *ngFor="let favorite of person.favorites; let i = index"
+          class="input-group mb-1">
+        <input class="form-control"
+                [(ngModel)]="favorite.name"
+                name="favorite_{{ i }}"
+                type="text"
+                required>
+        <button class="btn btn-outline-danger"
+                type="button"
+                (click)="deleteFavorite( i )">
+          <i class="bi bi-trash"></i>
+        </button>
 
+      </div>
     </div>
   </div>
 

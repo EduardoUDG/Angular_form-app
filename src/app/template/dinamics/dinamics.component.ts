@@ -30,9 +30,13 @@ export class DinamicsComponent {
   constructor() { }
 
 
-  save() {
+  save(): void {
     console.log(this.myForm);
     console.log('Form posted');
+  }
+
+  deleteFavorite( id: number ): void {
+    this.person.favorites.splice( id, 1);
   }
 
   valdiateName():boolean {
