@@ -19,6 +19,8 @@ export class DinamicsComponent {
 
   @ViewChild('myForm') myForm!: NgForm;
 
+  favorteGame: string = '';
+
   person: Person = {
     name: 'Eduardo',
     favorites: [
@@ -30,9 +32,20 @@ export class DinamicsComponent {
   constructor() { }
 
 
-  save(): void {
+  save() {
     console.log(this.myForm);
     console.log('Form posted');
+  }
+
+  addFavorite() {
+    if ( this.favorteGame === '' ) return;
+
+    const newFavoriteGame: Favorite = {
+      id: this.person.favorites.length + 1,
+      name:this.favorteGame
+    }
+    this.person.favorites.push({ ...newFavoriteGame })
+    this.favorteGame = '';
   }
 
   deleteFavorite( id: number ): void {

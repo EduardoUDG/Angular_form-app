@@ -32,13 +32,13 @@
       <div class="input-group">
         <input class="form-control"
                 type="text"
-                ngModel
-                name="favorite"
-                placeholder="Add favorite"
-                required
-                minlength="3">
+                [(ngModel)]="favorteGame"
+                (keyup.enter)="addFavorite()"
+                name="favorteGame"
+                placeholder="Add favorite">
         <button class="btn btn-outline-primary"
-                type="button">
+                type="button"
+                (click)="addFavorite()">
           Add
         </button>
       </div>
