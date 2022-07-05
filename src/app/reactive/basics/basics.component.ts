@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-basics',
@@ -6,11 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class BasicsComponent implements OnInit {
+export class BasicsComponent {
 
-  constructor() { }
+  // myForm: FormGroup = new FormGroup({
+  //   name  : new FormControl('RTX 4080ti'),
+  //   price : new FormControl(1500),
+  //   stock : new FormControl(5),
+  // });
 
-  ngOnInit(): void {
-  }
+  myForm: FormGroup = this._fb.group({
+    name: ['RTX 4080ti',],
+    price: [0],
+    stock: [0],
+  });
+
+
+  constructor(
+    private _fb: FormBuilder
+  ) { }
 
 }

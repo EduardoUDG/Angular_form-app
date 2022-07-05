@@ -4,14 +4,14 @@
 <div class="row">
   <div class="col">
 
-    <form autocomplete="off">
+    <form autocomplete="off" [formGroup]="myForm">
 
       <!-- field product -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Product</label>
         <div class="col-sm-9">
-          <input type="text"
-                 class="form-control"
+          <input class="form-control"
+                 formControlName="name"
                  placeholder="Product name">
           <span class="form-text text-danger">
                 Should be 3 letters
@@ -25,6 +25,7 @@
         <div class="col-sm-9">
           <input type="number"
                  class="form-control"
+                 formControlName="price"
                  placeholder="Product price">
           <span class="form-text text-danger">
             Price must be greater than 0
@@ -32,12 +33,13 @@
         </div>
       </div>
 
-      <!-- field product -->
+      <!-- Stock product -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Stock</label>
         <div class="col-sm-9">
           <input type="number"
                  class="form-control"
+                 formControlName="stock"
                  placeholder="Product stock">
         </div>
       </div>
@@ -59,26 +61,28 @@
 
 
 
-<!-- <div class="row">
+<div class="row">
   <div class="col">
 
     <span>valid</span>
     <code>
-      <pre>{{ miFormulario.valid }}</pre>
+      <pre>{{ myForm.valid }}</pre>
     </code>
 
     <span>Pristine</span>
     <code>
-      <pre>{{ miFormulario.pristine }}</pre>
+      <pre>{{ myForm.pristine }}</pre>
     </code>
 
     <span>Touched</span>
     <code>
-      <pre>{{ miFormulario.touched }}</pre>
+      <pre>{{ myForm.touched }}</pre>
     </code>
 
     <span>Value</span>
-    <pre>{{ miFormulario.value | json }}</pre>
+    <code>
+      <pre>{{ myForm.value | json }}</pre>
+    </code>
 
   </div>
-</div> -->
+</div>
