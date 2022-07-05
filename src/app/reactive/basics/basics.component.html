@@ -13,7 +13,8 @@
           <input class="form-control"
                  formControlName="name"
                  placeholder="Product name">
-          <span class="form-text text-danger">
+          <span class="form-text text-danger"
+                *ngIf="invalidInput('name')">
                 Should be 3 letters
           </span>
         </div>
@@ -27,7 +28,8 @@
                  class="form-control"
                  formControlName="price"
                  placeholder="Product price">
-          <span class="form-text text-danger">
+          <span class="form-text text-danger"
+                *ngIf="invalidInput('price')">
             Price must be greater than 0
           </span>
         </div>
@@ -41,6 +43,10 @@
                  class="form-control"
                  formControlName="stock"
                  placeholder="Product stock">
+          <span class="form-text text-danger"
+                 *ngIf="invalidInput('stock')">
+            Price must be greater than 0
+          </span>
         </div>
       </div>
 
