@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styles: [
   ]
 })
-export class BasicsComponent {
+export class BasicsComponent implements OnInit{
 
   // myForm: FormGroup = new FormGroup({
   //   name  : new FormControl('RTX 4080ti'),
@@ -26,9 +26,25 @@ export class BasicsComponent {
     private _fb: FormBuilder
   ) { }
 
+  ngOnInit(): void {
+    this.myForm.reset({
+      name: 'RTX 4080ti' ,
+      price: 1600,
+    });
+  }
+
   invalidInput( inputName: string ) {
     return this.myForm.controls[`${inputName}`].errors
             && this.myForm.controls[`${inputName}`].touched
+  }
+
+  save() {
+    if( this.myForm.invalid ) {
+      this.myForm.markAllAsTouched();
+      return
+    }
+    console.log( this.myForm.value );
+    this.myForm.reset()
   }
 
 
