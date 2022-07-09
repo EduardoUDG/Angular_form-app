@@ -1,7 +1,7 @@
 <h2>Reactive: <small>switches</small></h2>
 <hr>
 
-<form>
+<form [formGroup]="myForm">
 
   <!-- Radios -->
   <div class="row mb-3">
@@ -12,7 +12,7 @@
         <input class="form-check-input"
                type="radio"
                value="M"
-               name="gender_radio"
+               formControlName="gender"
                id="male_radio">
         <label class="form-check-label" for="male_radio">
           Male
@@ -22,7 +22,7 @@
         <input class="form-check-input"
                type="radio"
                value="F"
-               name="gender_radio"
+               formControlName="gender"
                id="female_radio">
         <label class="form-check-label" for="female_radio">
           Female
@@ -41,6 +41,7 @@
       <div class="form-check form-switch mt-2">
         <input class="form-check-input"
                type="checkbox"
+               formControlName="notifications"
                id="flexSwitchCheckChecked">
         <label class="form-check-label" for="flexSwitchCheckChecked">I want to receive notifications</label>
       </div>
@@ -57,6 +58,7 @@
       <div class="form-check">
         <input class="form-check-input"
                type="checkbox"
+               formControlName="terms"
                id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
           I accept terms and conditions
@@ -79,7 +81,7 @@
 </form>
 
 
-<!-- <h5>Form value</h5>
+<h5>Form value</h5>
 <code><pre>{{ myForm.value | json }}</pre></code>
 <br>
 
@@ -92,5 +94,5 @@
 <br>
 
 <h5>Terms</h5>
-<code><pre>{{ myForm.controls['terms']?.errors| json}}</pre></code>
-<br> -->
+<code><pre>{{ myForm.controls['terms'].value | json}}</pre></code>
+<br>
