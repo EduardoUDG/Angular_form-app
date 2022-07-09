@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 
 @Component({
@@ -12,7 +12,15 @@ export class DinamicsComponent implements OnInit {
 
   myForm: FormGroup = this._fb.group({
     name: [ '', [Validators.required, Validators.minLength(3)] ],
+    favorites: this._fb.array([
+      ['Metal Gear'     , Validators.required],
+      ['Death Stranding', Validators.required],
+    ], Validators.required)
   })
+
+  get favoritesArr() {
+    return this.myForm.get('favorites') as FormArray;
+  }
 
   constructor(
     private _fb: FormBuilder
