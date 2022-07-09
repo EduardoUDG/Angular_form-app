@@ -29,5 +29,18 @@ export class SwitchesComponent implements OnInit{
       ...this.person,
       terms: true
     });
+
+    this.myForm.valueChanges.subscribe({
+      next: ({ terms, ...rest}) => {
+        this.person = rest;
+      }
+    })
+  }
+
+  save() {
+    const formValue = { ...this.myForm.value };
+    delete formValue.terms;
+
+    this.person = formValue;
   }
 }
