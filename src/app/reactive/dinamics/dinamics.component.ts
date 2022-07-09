@@ -52,4 +52,8 @@ export class DinamicsComponent implements OnInit {
     this.newFavorite.reset()
   }
 
+  deleteFavoriteGame( idx:number ) {
+    this.favoritesArr.removeAt( idx );
+  }
+
 }
