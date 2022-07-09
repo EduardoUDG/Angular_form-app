@@ -22,12 +22,16 @@
   <!-- Add -->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Favorite</label>
-    <div class="col-sm-9" >
+    <div class="col-sm-9">
 
       <div class="input-group">
-        <input class="form-control">
+        <input class="form-control"
+               [formControl]="newFavorite"
+               placeholder="Add favorite"
+               (keyup.enter)="addNewGame()">
         <button class="btn btn-outline-primary"
-                type="button">
+                type="button"
+                (click)="addNewGame()">
           Add
         </button>
       </div>
@@ -71,7 +75,10 @@
 
 
 <span>Form valid</span>
-<code><pre>{{ myForm.valid| json }}</pre></code>
+<code><pre>{{ myForm.valid | json }}</pre></code>
 
 <span>Form Data</span>
-<code><pre>{{ myForm.value| json }}</pre></code>
+<code><pre>{{ myForm.value | json }}</pre></code>
+
+<span>Favorite Game</span>
+<code><pre>{{ newFavorite.value| json }}</pre></code>
