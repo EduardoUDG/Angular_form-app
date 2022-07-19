@@ -16,7 +16,7 @@ interface MenuItem {
 })
 export class SidemenuComponent {
 
-  menuTemplate: MenuItem[] =[
+  templateMenu: MenuItem[] =[
     {
       text: 'Basics',
       path: '/template/basics'
@@ -32,7 +32,7 @@ export class SidemenuComponent {
   ];
 
 
-  menuReactive: MenuItem[] =[
+  reactiveMenu: MenuItem[] =[
     {
       text: 'Basics',
       path: '/reactive/basics'
@@ -44,6 +44,17 @@ export class SidemenuComponent {
     {
       text: 'Switches',
       path: '/reactive/switches'
+    },
+  ];
+
+  authMenu: MenuItem[] =[
+    {
+      text: 'Singin',
+      path: '/auth/singin'
+    },
+    {
+      text: 'Singup',
+      path: '/auth/singup'
     },
   ];
 

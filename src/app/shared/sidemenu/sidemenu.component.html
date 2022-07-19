@@ -5,7 +5,7 @@
 <hr>
 
 <ul class="list-group">
-  <li *ngFor="let item of menuTemplate"
+  <li *ngFor="let item of templateMenu"
       class="list-group-item list-group-item-action"
       [routerLink]="[item.path]"
       routerLinkActive="active">
@@ -21,10 +21,26 @@
 <hr>
 
 <ul class="list-group">
-  <li *ngFor="let item of menuReactive"
+  <li *ngFor="let item of reactiveMenu"
       class="list-group-item list-group-item-action"
       [routerLink]="[item.path]"
-      routerLinkActive="active" r>
+      routerLinkActive="active">
+    {{ item.text }}
+  </li>
+</ul>
+
+
+<h2 class="mt-4">
+  <i class="bi bi-person-bounding-box"></i>
+  Validators
+</h2>
+<hr>
+
+<ul class="list-group">
+  <li *ngFor="let item of authMenu"
+      class="list-group-item list-group-item-action"
+      [routerLink]="[item.path]"
+      routerLinkActive="active">
     {{ item.text }}
   </li>
 </ul>
