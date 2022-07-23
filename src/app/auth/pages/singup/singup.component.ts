@@ -10,9 +10,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SingupComponent implements OnInit {
 
   lastNamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
+  emailPattern   : string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
   myForm: FormGroup = this._fb.group({
-    name: ['', [Validators.required, Validators.pattern( this.lastNamePattern )]],
+    name : ['', [Validators.required, Validators.pattern( this.lastNamePattern )]],
+    email: ['', [Validators.required, Validators.pattern( this.emailPattern ) ]],
   });
 
   constructor(
@@ -20,6 +22,10 @@ export class SingupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.myForm.reset({
+      name: 'Eduardo Chavez',
+      email: 'eduardo@gmail.com'
+    })
   }
 
   inputInvalid( camp: string ) {
