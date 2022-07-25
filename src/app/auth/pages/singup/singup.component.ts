@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-singup',
@@ -12,9 +12,20 @@ export class SingupComponent implements OnInit {
   lastNamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
   emailPattern   : string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
 
+  cannotBeUsername( argument: FormControl ) {
+    const value:string = argument.value?.trim().toLowerCase();
+    if( value === 'strider' ) {
+      return {
+        noStrider: true
+      }
+    }
+    return null;
+  }
+
   myForm: FormGroup = this._fb.group({
     name : ['', [Validators.required, Validators.pattern( this.lastNamePattern )]],
     email: ['', [Validators.required, Validators.pattern( this.emailPattern ) ]],
+    username: ['', [Validators.required, this.cannotBeUsername] ],
   });
 
   constructor(
@@ -24,7 +35,8 @@ export class SingupComponent implements OnInit {
   ngOnInit(): void {
     this.myForm.reset({
       name: 'Eduardo Chavez',
-      email: 'eduardo@gmail.com'
+      email: 'eduardo@gmail.com',
+      username: 'lalofapmx'
     })
   }
 
