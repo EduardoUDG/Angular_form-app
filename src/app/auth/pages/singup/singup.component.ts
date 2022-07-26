@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { ValidatorService } from '../../../shared/validators/validator.service';
 
 @Component({
   selector: 'app-singup',
@@ -9,27 +11,16 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class SingupComponent implements OnInit {
 
-  lastNamePattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-  emailPattern   : string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
-
-  cannotBeUsername( argument: FormControl ) {
-    const value:string = argument.value?.trim().toLowerCase();
-    if( value === 'strider' ) {
-      return {
-        noStrider: true
-      }
-    }
-    return null;
-  }
 
   myForm: FormGroup = this._fb.group({
-    name : ['', [Validators.required, Validators.pattern( this.lastNamePattern )]],
-    email: ['', [Validators.required, Validators.pattern( this.emailPattern ) ]],
-    username: ['', [Validators.required, this.cannotBeUsername] ],
+    name : ['', [Validators.required, Validators.pattern( this._vs.lastNamePattern )]],
+    email: ['', [Validators.required, Validators.pattern( this._vs.emailPattern ) ]],
+    username: ['', [Validators.required, this._vs.cannotBeUsername] ],
   });
 
   constructor(
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _vs: ValidatorService
   ) { }
 
   ngOnInit(): void {
