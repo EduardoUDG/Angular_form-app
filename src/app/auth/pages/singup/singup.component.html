@@ -78,7 +78,9 @@
       <!-- Send -->
       <div class="row">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end">
+          <button type="submit"
+                  class="btn btn-primary float-end"
+                  [disabled]="myForm.pending">
             Signup
           </button>
         </div>
@@ -95,6 +97,17 @@
 <h4>
   <code><pre>{{ myForm.valid }}</pre></code>
 </h4>
+
+<h2>Form Status:</h2>
+<h4>
+  <code><pre>{{ myForm.status }}</pre></code>
+</h4>
+
+<h2>Form Pending:</h2>
+<h4>
+  <code><pre>{{ myForm.pending }}</pre></code>
+</h4>
+
 
 
 <h2>Name</h2>

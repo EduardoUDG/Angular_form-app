@@ -33,7 +33,9 @@ export class SingupComponent implements OnInit {
     this.myForm.reset({
       name: 'Eduardo Chavez',
       email: 'test1@test.com',
-      username: 'lalofapmx'
+      username: 'lalofapmx',
+      password: '123456',
+      confirmPassword: '123456'
     })
   }
 
