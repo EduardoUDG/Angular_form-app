@@ -30,9 +30,16 @@
                  class="form-control"
                  formControlName="email"
                  placeholder="Email">
-          <span *ngIf="inputInvalid('email')" class="form-text text-danger">
+          <span *ngIf="emailRequired()" class="form-text text-danger">
             The email is required
           </span>
+          <span *ngIf="emailFormat()" class="form-text text-danger">
+            The email does not have email format
+          </span>
+          <span *ngIf="emailTaken()" class="form-text text-danger">
+            The email is registered
+          </span>
+
         </div>
       </div>
 

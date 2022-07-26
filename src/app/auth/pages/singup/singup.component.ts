@@ -44,6 +44,21 @@ export class SingupComponent implements OnInit {
         && this.myForm.get(camp)?.touched;
   }
 
+  emailRequired() {
+    return this.myForm.get('email')?.errors?.['required']
+        && this.myForm.get('email')?.touched;
+  }
+
+  emailFormat() {
+    return this.myForm.get('email')?.errors?.['pattern']
+        && this.myForm.get('email')?.touched;
+  }
+
+  emailTaken() {
+    return this.myForm.get('email')?.errors?.['emailTaken']
+        && this.myForm.get('email')?.touched;
+  }
+
   formSubmit() {
     if( this.myForm.invalid ) {
       this.myForm.markAllAsTouched();
