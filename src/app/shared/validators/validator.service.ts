@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class ValidatorService {
 
   constructor() { }
 
+
   cannotBeUsername = ( argument: FormControl ):ValidationErrors | null => {
     const value:string = argument.value?.trim().toLowerCase();
     if( value === 'strider' ) {
@@ -19,6 +20,21 @@ export class ValidatorService {
       }
     }
     return null;
+  }
+
+
+  sameInputs( field1:string, field2:string ) {
+    return ( formControl: AbstractControl ): ValidationErrors | null => {
+      const pass1 = formControl.get(field1)?.value;
+      const pass2 = formControl.get(field2)?.value;
+
+      if( pass1 !== pass2 ) {
+        formControl.get(field2)?.setErrors({ noEqual: true });
+        return { noEqual: true }
+      }
+      formControl.get(field2)?.setErrors(null);
+      return null;
+    }
   }
 
 }

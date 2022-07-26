@@ -13,9 +13,13 @@ export class SingupComponent implements OnInit {
 
 
   myForm: FormGroup = this._fb.group({
-    name : ['', [Validators.required, Validators.pattern( this._vs.lastNamePattern )]],
-    email: ['', [Validators.required, Validators.pattern( this._vs.emailPattern ) ]],
-    username: ['', [Validators.required, this._vs.cannotBeUsername] ],
+    name            : ['', [Validators.required, Validators.pattern( this._vs.lastNamePattern )]],
+    email           : ['', [Validators.required, Validators.pattern( this._vs.emailPattern ) ]],
+    username        : ['', [Validators.required, this._vs.cannotBeUsername] ],
+    password        : ['', [Validators.required, Validators.minLength(6)] ],
+    confirmPassword : ['', [Validators.required] ],
+  }, {
+    validators: [ this._vs.sameInputs('password', 'confirmPassword') ]
   });
 
   constructor(

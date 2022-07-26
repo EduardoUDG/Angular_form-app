@@ -56,7 +56,11 @@
         <div class="col-sm-9">
           <input type="password"
                  class="form-control"
+                 formControlName="password"
                  placeholder="Account passowrd">
+          <span *ngIf="inputInvalid('password')" class="form-text text-danger">
+            The password should be min 6 letters
+          </span>
         </div>
       </div>
 
@@ -66,6 +70,7 @@
         <div class="col-sm-9">
           <input type="password"
                  class="form-control"
+                 formControlName="confirmPassword"
                  placeholder="Confirm password">
         </div>
       </div>
@@ -101,3 +106,14 @@
 <h4>
   <code><pre>{{ myForm.controls['username'].errors | json}}</pre></code>
 </h4>
+
+<h2>Password</h2>
+<h4>
+  <code><pre>{{ myForm.controls['password'].errors | json}}</pre></code>
+</h4>
+
+<h2>Confirm</h2>
+<h4>
+  <code><pre>{{ myForm.controls['confirmPassword'].errors | json}}</pre></code>
+</h4>
+
