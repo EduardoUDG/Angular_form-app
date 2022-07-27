@@ -23,6 +23,18 @@ export class SingupComponent implements OnInit {
     validators: [ this._vs.sameInputs('password', 'confirmPassword') ]
   });
 
+  get emailErrorMsg(): string {
+    const errors = this.myForm.get('email')?.errors;
+    if( errors?.['required'] ) {
+      return 'The email is required';
+    } else if ( errors?.['pattern'] ) {
+      return 'The email is not email format';
+    } else if ( errors?.['emailTaken'] ) {
+      return 'The email is ready exist';
+    }
+    return '';
+  }
+
   constructor(
     private _fb: FormBuilder,
     private _vs: ValidatorService,
@@ -42,21 +54,6 @@ export class SingupComponent implements OnInit {
   inputInvalid( camp: string ) {
     return this.myForm.get(camp)?.invalid
         && this.myForm.get(camp)?.touched;
-  }
-
-  emailRequired() {
-    return this.myForm.get('email')?.errors?.['required']
-        && this.myForm.get('email')?.touched;
-  }
-
-  emailFormat() {
-    return this.myForm.get('email')?.errors?.['pattern']
-        && this.myForm.get('email')?.touched;
-  }
-
-  emailTaken() {
-    return this.myForm.get('email')?.errors?.['emailTaken']
-        && this.myForm.get('email')?.touched;
   }
 
   formSubmit() {
